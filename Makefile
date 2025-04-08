@@ -3,8 +3,8 @@ NAME = philosophers
 SDIR = srcs
 HDIR = headers
 TD1R = srcs/utils
-TD3R = srcs/routines
-TD4R = srcs/exit
+TD3R = srcs/simulation
+TD4R = srcs/bordures
 ODIR = objs
 
 CFLAGS = -Wall -Wextra -Werror -I$(HDIR) -pthread
