@@ -6,7 +6,7 @@
 /*   By: dyodlm <dyodlm@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 12:05:32 by dyodlm            #+#    #+#             */
-/*   Updated: 2025/04/07 12:06:22 by dyodlm           ###   ########.fr       */
+/*   Updated: 2025/04/08 10:22:02 by dyodlm           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ typedef struct s_rules
 	t_philo					*philos;
 }	t_rules;
 
-long					timestamp(void);
+long					get_time_value(void);
 void					print_action(t_philo *philo, const char *action);
 int						init_all(t_rules *rules, int argc, char **argv);
 void					start_simulation(t_rules *rules);

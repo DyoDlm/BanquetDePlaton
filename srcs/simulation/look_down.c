@@ -6,7 +6,7 @@
 /*   By: dyodlm <dyodlm@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 11:37:48 by dyodlm            #+#    #+#             */
-/*   Updated: 2025/04/07 12:12:43 by dyodlm           ###   ########.fr       */
+/*   Updated: 2025/04/08 10:22:37 by dyodlm           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	*monitor_routine(void *arg)
 		usleep(1000);
 		while (i < rules->num_philo)
 		{
-			if ((timestamp() - rules->philos[i].last_meal) > rules->time_to_die)
+			if ((get_time_value() - rules->philos[i].last_meal) > rules->time_to_die)
 			{
 				pthread_mutex_lock(&rules->stop_mutex);
 				rules->simulation_stop = 1;

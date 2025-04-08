@@ -6,7 +6,7 @@
 /*   By: dyodlm <dyodlm@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 11:41:59 by dyodlm            #+#    #+#             */
-/*   Updated: 2025/04/08 10:08:21 by dyodlm           ###   ########.fr       */
+/*   Updated: 2025/04/08 10:22:18 by dyodlm           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,6 @@ int	init_all(t_rules *rules, int argc, char **argv)
 		rules->philos[i].right_fork = &rules->forks[(1 + i) % rules->num_philo];
 		i++;
 	}
-	rules->start_time = timestamp();
+	rules->start_time = get_time_value();
 	return (exit_display(1), 1);
 }
