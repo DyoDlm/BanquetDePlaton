@@ -1,77 +1,65 @@
-Num philo : 5
-Num philo : 600
-Num philo : 200
-Num philo : 200
-hello
-1 1 is thinking
-1 1 has taken a fork
-1 1 has taken a fork
-1 1 is eating
-1 3 is thinking
-1 3 has taken a fork
-1 3 has taken a fork
-1 3 is eating
-1 5 is thinking
-1 5 has taken a fork
-2 2 is thinking
-2 4 is thinking
-201 1 is sleeping
-201 3 is sleeping
-201 5 has taken a fork
-201 5 is eating
-201 2 has taken a fork
-201 2 has taken a fork
-201 2 is eating
-201 4 has taken a fork
-301 1 is thinking
-301 3 is thinking
-401 5 is sleeping
-401 2 is sleeping
-401 3 has taken a fork
-401 1 has taken a fork
-401 1 has taken a fork
-401 1 is eating
-401 4 has taken a fork
-401 4 is eating
-501 5 is thinking
-501 2 is thinking
-601 1 is sleeping
-601 4 is sleeping
-601 2 has taken a fork
-601 3 has taken a fork
-601 3 is eating
-601 5 has taken a fork
-601 5 has taken a fork
-601 5 is eating
-701 4 is thinking
-701 1 is thinking
-801 5 is sleeping
-801 3 is sleeping
-801 4 has taken a fork
-801 4 has taken a fork
-801 4 is eating
-801 2 has taken a fork
-801 2 is eating
-801 1 has taken a fork
-901 5 is thinking
-901 3 is thinking
-1001 2 is sleeping
-1001 4 is sleeping
-1001 1 has taken a fork
-1001 1 is eating
-1002 3 has taken a fork
-1002 3 has taken a fork
-1002 3 is eating
-1002 5 has taken a fork
-1101 2 is thinking
-1101 4 is thinking
-1202 1 is sleeping
-1202 2 has taken a fork
-1202 5 has taken a fork
-1202 5 is eating
-1202 3 is sleeping
-1202 2 has taken a fork
-1202 2 is eating
-1202 4 has taken a fork
-1302 1 is thinking
-1302 3 is thinking
+time : 0	ID : 1		Action : IS THINKING
+time : 0	ID : 1		Action : TAKING LEFT FORK
+time : 0	ID : 1		Action : TAKING RIGHT FORK
+time : 0	ID : 1		Action : IS EATING
+time : 0	ID : 3		Action : IS THINKING
+time : 0	ID : 3		Action : TAKING LEFT FORK
+time : 0	ID : 3		Action : TAKING RIGHT FORK
+time : 0	ID : 3		Action : IS EATING
+time : 0	ID : 5		Action : IS THINKING
+time : 0	ID : 5		Action : TAKING LEFT FORK
+time : 0	ID : 5		Action : TAKING RIGHT FORK
+time : 1	ID : 2		Action : IS THINKING
+time : 1	ID : 2		Action : TAKING LEFT FORK
+time : 1	ID : 4		Action : IS THINKING
+time : 1	ID : 4		Action : TAKING LEFT FORK
+time : 200	ID : 1		Action : IS SLEEPING
+time : 200	ID : 2		Action : TAKING RIGHT FORK
+time : 200	ID : 5		Action : IS EATING
+time : 200	ID : 3		Action : IS SLEEPING
+time : 200	ID : 4		Action : TAKING RIGHT FORK
+time : 200	ID : 2		Action : IS EATING
+time : 300	ID : 1		Action : IS THINKING
+time : 300	ID : 1		Action : TAKING LEFT FORK
+time : 300	ID : 3		Action : IS THINKING
+time : 300	ID : 3		Action : TAKING LEFT FORK
+time : 400	ID : 5		Action : IS SLEEPING
+time : 400	ID : 1		Action : TAKING RIGHT FORK
+time : 400	ID : 2		Action : IS SLEEPING
+time : 400	ID : 4		Action : IS EATING
+time : 400	ID : 3		Action : TAKING RIGHT FORK
+time : 400	ID : 1		Action : IS EATING
+time : 500	ID : 5		Action : IS THINKING
+time : 500	ID : 5		Action : TAKING LEFT FORK
+time : 500	ID : 2		Action : IS THINKING
+time : 500	ID : 2		Action : TAKING LEFT FORK
+time : 600	ID : 1		Action : IS SLEEPING
+time : 600	ID : 4		Action : IS SLEEPING
+time : 600	ID : 3		Action : IS EATING
+time : 600	ID : 2		Action : TAKING RIGHT FORK
+time : 600	ID : 5		Action : TAKING RIGHT FORK
+time : 600	ID : 5		Action : IS EATING
+time : 701	ID : 1		Action : IS THINKING
+time : 701	ID : 1		Action : TAKING LEFT FORK
+time : 701	ID : 4		Action : IS THINKING
+time : 701	ID : 4		Action : TAKING LEFT FORK
+time : 801	ID : 3		Action : IS SLEEPING
+time : 801	ID : 2		Action : IS EATING
+time : 801	ID : 5		Action : IS SLEEPING
+time : 801	ID : 1		Action : TAKING RIGHT FORK
+time : 801	ID : 4		Action : TAKING RIGHT FORK
+time : 801	ID : 4		Action : IS EATING
+time : 901	ID : 3		Action : IS THINKING
+time : 901	ID : 3		Action : TAKING LEFT FORK
+time : 901	ID : 5		Action : IS THINKING
+time : 901	ID : 5		Action : TAKING LEFT FORK
+time : 1001	ID : 2		Action : IS SLEEPING
+time : 1001	ID : 3		Action : TAKING RIGHT FORK
+time : 1001	ID : 1		Action : IS EATING
+time : 1001	ID : 4		Action : IS SLEEPING
+time : 1001	ID : 3		Action : IS EATING
+time : 1001	ID : 5		Action : TAKING RIGHT FORK
+time : 1101	ID : 2		Action : IS THINKING
+time : 1101	ID : 2		Action : TAKING LEFT FORK
+time : 1101	ID : 4		Action : IS THINKING
+time : 1101	ID : 4		Action : TAKING LEFT FORK

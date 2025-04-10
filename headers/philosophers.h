@@ -6,7 +6,7 @@
 /*   By: dyodlm <dyodlm@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 12:05:32 by dyodlm            #+#    #+#             */
-/*   Updated: 2025/04/08 10:22:02 by dyodlm           ###   ########.fr       */
+/*   Updated: 2025/04/10 06:50:27 by dyodlm           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,11 @@
 # include <pthread.h>
 # include <sys/time.h>
 # include <stdbool.h>
+
+#define IS_ALIVE 1
+#define HAS_STARVED 0
+#define LEFT_FORK 1
+#define RIGHT_FORK 0
 
 typedef struct s_rules	t_rules;
 
@@ -48,15 +53,24 @@ typedef struct s_rules
 	t_philo					*philos;
 }	t_rules;
 
+typedef bool			(*t_actions)(t_philo *);
+
 long					get_time_value(void);
 void					print_action(t_philo *philo, const char *action);
 int						init_all(t_rules *rules, int argc, char **argv);
-void					start_simulation(t_rules *rules);
+void					*philo_routine(void *arg);
 void					*monitor_routine(void *arg);
+
+//	ACTIONS
+bool					is_eating(t_philo *philo);
+bool					is_thinking(t_philo *philo);
+bool					take_left_fork(t_philo *philo);
+bool					take_right_fork(t_philo *philo);
+bool					unlock_the_forks(t_philo *philo);
 
 //	EXIT
 void					exit_display(int status);
-void					cleanup(t_rules *rules);
+void					exit_free(t_rules *rules);
 
 //	LIBFT
 unsigned long long int	ft_atoull(char *number);

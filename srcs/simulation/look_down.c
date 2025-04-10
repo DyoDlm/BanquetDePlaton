@@ -24,7 +24,8 @@ void	*monitor_routine(void *arg)
 		usleep(1000);
 		while (i < rules->num_philo)
 		{
-			if ((get_time_value() - rules->philos[i].last_meal) > rules->time_to_die)
+			if ((get_time_value() - rules->philos[i].last_meal)
+				> rules->time_to_die)
 			{
 				pthread_mutex_lock(&rules->stop_mutex);
 				rules->simulation_stop = 1;

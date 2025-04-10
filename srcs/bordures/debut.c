@@ -6,19 +6,20 @@
 /*   By: dyodlm <dyodlm@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 11:41:59 by dyodlm            #+#    #+#             */
-/*   Updated: 2025/04/08 10:22:18 by dyodlm           ###   ########.fr       */
+/*   Updated: 2025/04/10 06:30:48 by dyodlm           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
-
+/*
 static void	print_data(t_rules *rules)
 {
 	printf("Num philo : %lld\n", rules->num_philo);
 	printf("Num philo : %lld\n", rules->time_to_die);
 	printf("Num philo : %lld\n", rules->time_to_eat);
 	printf("Num philo : %lld\n", rules->time_to_eat);
-}
+}*/
+
 static bool	are_values_ok(t_rules *rules)
 {
 	return (rules->num_philo > 0 && rules->time_to_die > 0
@@ -38,26 +39,13 @@ static bool	parse_args(t_rules *rules, int ac, char **av)
 	else
 		rules->max_eat = -1;
 	rules->simulation_stop = 0;
-	print_data(rules);
 	return (are_values_ok(rules));
 }
 
-int	init_all(t_rules *rules, int argc, char **argv)
+static void	data_distribution(t_rules *rules)
 {
 	unsigned long long int	i;
 
-	if (!parse_args(rules, argc, argv))
-		return (0);
-	rules->forks = calloc(sizeof(pthread_mutex_t) * rules->num_philo, 1);
-	rules->philos = calloc(sizeof(t_philo) * rules->num_philo, 1);
-	printf("hello\n");
-	if (!rules->forks || !rules->philos)
-		return (0);
-	pthread_mutex_init(&rules->print_mutex, NULL);
-	pthread_mutex_init(&rules->stop_mutex, NULL);
-	i = 0;
-	while (i < rules->num_philo)
-		pthread_mutex_init(&rules->forks[i++], NULL);
 	i = 0;
 	while (i < rules->num_philo)
 	{
@@ -69,6 +57,24 @@ int	init_all(t_rules *rules, int argc, char **argv)
 		rules->philos[i].right_fork = &rules->forks[(1 + i) % rules->num_philo];
 		i++;
 	}
+}
+
+int	init_all(t_rules *rules, int argc, char **argv)
+{
+	unsigned long long int	i;
+
+	i = 0;
+	if (!parse_args(rules, argc, argv))
+		return (0);
+	rules->forks = calloc(sizeof(pthread_mutex_t) * rules->num_philo, 1);
+	rules->philos = calloc(sizeof(t_philo) * rules->num_philo, 1);
+	if (!rules->forks || !rules->philos)
+		return (0);
+	pthread_mutex_init(&rules->print_mutex, NULL);
+	pthread_mutex_init(&rules->stop_mutex, NULL);
+	while (i < rules->num_philo)
+		pthread_mutex_init(&rules->forks[i++], NULL);
+	data_distribution(rules);
 	rules->start_time = get_time_value();
 	return (exit_display(1), 1);
 }

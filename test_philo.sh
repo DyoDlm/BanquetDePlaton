@@ -5,10 +5,11 @@ RED='\033[0;31m'
 GREEN='\033[0;32m'
 NC='\033[0m'
 
+DFLAGS = "valgrind --tool=helgrind"
+
 check_executable() {
 	if [ ! -x "$BIN" ]; then
-		echo -e "${RED}Error: $BIN not found or not executable.${NC}"
-		exit 1
+		make dbug
 	fi
 }
 
@@ -33,16 +34,12 @@ check_executable
 
 echo "==== Testing Philosopher Program ===="
 
-# BASIC TESTS
-run_test 2 800 200 200
-run_test 5 800 200 200
-run_test 5 800 200 200 3
-run_test 100 800 200 200 1
+$DFLAGS run_test 2 800 200 200 
+$DFLAGS run_test 5 800 200 200 
+$DFLAGS run_test 5 800 200 200 3 
+$DFLAGS run_test 100 800 200 200 1
 
-# EDGE CASES
-run_test 1 800 200 200
-run_test 5 310 200 100
-run_test 5 800 200 200 0
-run_test 5 600 200 100
-
-#rm -f log.txt
+$DFLAGS run_test 1 800 200 200 
+$DFLAGS run_test 5 310 200 100 
+$DFLAGS run_test 5 800 200 200 0 
+$DFLAGS run_test 5 600 200 100 

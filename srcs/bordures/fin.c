@@ -6,7 +6,7 @@
 /*   By: dyodlm <dyodlm@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 07:11:23 by dyodlm            #+#    #+#             */
-/*   Updated: 2025/04/08 10:03:05 by dyodlm           ###   ########.fr       */
+/*   Updated: 2025/04/10 07:46:12 by dyodlm           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,11 @@ void	exit_display(int status)
 		printf("Problem parsing arguments\n");
 	else if (status == 123)
 		printf("Nicely done, c'est tchao Haha\n");
+	else if (status == -1)
+		printf("A philosopher is Dead\n");
 }
 
-void	cleanup(t_rules *rules)
+void	exit_free(t_rules *rules)
 {
 	unsigned long long int	i;
 
