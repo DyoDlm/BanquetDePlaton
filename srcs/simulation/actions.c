@@ -6,7 +6,7 @@
 /*   By: dyodlm <dyodlm@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 08:29:32 by dyodlm            #+#    #+#             */
-/*   Updated: 2025/04/10 07:49:38 by dyodlm           ###   ########.fr       */
+/*   Updated: 2025/04/11 05:48:43 by dyodlm           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ bool	is_eating(t_philo *philo)
 //	if (philo->last_meal >= philo->rules->time_to_eat)
 //		return (HAS_STARVED);
 	print_action(philo, "IS EATING");
+//	if (!philo->alive)
+//		return (HAS_STARVED);
 	philo->last_meal = get_time_value();
 	philo->meals_eaten++;
 	usleep(philo->rules->time_to_eat * 1000);

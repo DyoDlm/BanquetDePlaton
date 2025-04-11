@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   helper.c                                           :+:      :+:    :+:   */
+/*   handler.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dyodlm <dyodlm@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 12:03:50 by dyodlm            #+#    #+#             */
-/*   Updated: 2025/04/10 06:13:23 by dyodlm           ###   ########.fr       */
+/*   Updated: 2025/04/11 05:52:16 by dyodlm           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	print_action(t_philo *philo, const char *action)
 
 	pthread_mutex_lock(&philo->rules->print_mutex);
 	pthread_mutex_lock(&philo->rules->stop_mutex);
-	if (!philo->rules->simulation_stop)
+ 	if (!philo->rules->simulation_stop)
 	{
 		now = get_time_value() - philo->rules->start_time;
 		printf("time : %ld\tID : %d\t\tAction : %s\n", now, philo->id, action);

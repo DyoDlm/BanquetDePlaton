@@ -6,7 +6,7 @@
 /*   By: dyodlm <dyodlm@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 11:41:59 by dyodlm            #+#    #+#             */
-/*   Updated: 2025/04/10 06:30:48 by dyodlm           ###   ########.fr       */
+/*   Updated: 2025/04/10 12:56:49 by dyodlm           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,9 @@ static void	data_distribution(t_rules *rules)
 	while (i < rules->num_philo)
 	{
 		rules->philos[i].id = i + 1;
+		rules->philos[i].is_full = false;
+		rules->philos[i].alive = true;
+		rules->philos[i].last_meal = 0;
 		rules->philos[i].meals_eaten = 0;
 		rules->philos[i].last_meal = 0;
 		rules->philos[i].rules = rules;
@@ -72,6 +75,7 @@ int	init_all(t_rules *rules, int argc, char **argv)
 		return (0);
 	pthread_mutex_init(&rules->print_mutex, NULL);
 	pthread_mutex_init(&rules->stop_mutex, NULL);
+	pthread_mutex_init(&rules->full_mutex, NULL);
 	while (i < rules->num_philo)
 		pthread_mutex_init(&rules->forks[i++], NULL);
 	data_distribution(rules);

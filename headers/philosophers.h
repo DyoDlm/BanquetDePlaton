@@ -6,7 +6,7 @@
 /*   By: dyodlm <dyodlm@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 12:05:32 by dyodlm            #+#    #+#             */
-/*   Updated: 2025/04/10 06:50:27 by dyodlm           ###   ########.fr       */
+/*   Updated: 2025/04/10 12:56:39 by dyodlm           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ typedef struct s_philo
 	int						id;
 	unsigned long long int	meals_eaten;
 	unsigned long long int	last_meal;
+	bool					is_full;
+	bool					alive;
 	pthread_t				thread;
 	pthread_mutex_t			*left_fork;
 	pthread_mutex_t			*right_fork;
@@ -47,9 +49,11 @@ typedef struct s_rules
 	unsigned long long int	max_eat;
 	unsigned long long int	start_time;
 	unsigned long long int	simulation_stop;
+	unsigned long long int	philos_fullfilled;
 	pthread_mutex_t			*forks;
 	pthread_mutex_t			print_mutex;
 	pthread_mutex_t			stop_mutex;
+	pthread_mutex_t			full_mutex;
 	t_philo					*philos;
 }	t_rules;
 
