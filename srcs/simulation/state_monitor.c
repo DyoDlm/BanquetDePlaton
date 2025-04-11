@@ -6,7 +6,7 @@
 /*   By: dyodlm <dyodlm@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 11:37:48 by dyodlm            #+#    #+#             */
-/*   Updated: 2025/04/11 08:34:44 by dyodlm           ###   ########.fr       */
+/*   Updated: 2025/04/11 09:32:57 by dyodlm           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ void *monitor_routine(void *arg)
 			rules->simulation_stop = 1;
 			pthread_mutex_unlock(&rules->stop_mutex);
 			pthread_mutex_unlock(&rules->full_mutex);
-			return NULL;
+			printf("ALL PHILOSOPHERS HAVE EATEN ENOUGH\n");
+			return (NULL);
 		}
 		pthread_mutex_unlock(&rules->full_mutex);
 		i = 0;
@@ -37,8 +38,8 @@ void *monitor_routine(void *arg)
 				pthread_mutex_lock(&rules->stop_mutex);
 				rules->simulation_stop = 1;
 				pthread_mutex_unlock(&rules->stop_mutex);
-				print_action(&rules->philos[i], "died");
-				return NULL;
+				printf("A PHILO DIED\n");
+				return (NULL);
 			}
 			i++;
 		}
