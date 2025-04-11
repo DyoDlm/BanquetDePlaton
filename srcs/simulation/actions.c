@@ -6,7 +6,7 @@
 /*   By: dyodlm <dyodlm@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 08:29:32 by dyodlm            #+#    #+#             */
-/*   Updated: 2025/04/11 05:48:43 by dyodlm           ###   ########.fr       */
+/*   Updated: 2025/04/11 08:38:40 by dyodlm           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,19 @@
 
 bool	is_eating(t_philo *philo)
 {
-//	if (philo->meals_eaten >= philo->rules->max_eat)
-//		return (IS_ALIVE);
-//	if (philo->last_meal >= philo->rules->time_to_eat)
-//		return (HAS_STARVED);
-	print_action(philo, "IS EATING");
-//	if (!philo->alive)
-//		return (HAS_STARVED);
 	philo->last_meal = get_time_value();
 	philo->meals_eaten++;
+	printf("FULLFILED PHILOS : %lld\n", philo->rules->philos_fullfilled);
+	if (philo->meals_eaten >= philo->rules->max_eat && !philo->is_full)
+	{
+		philo->is_full = true;
+		pthread_mutex_lock(&philo->rules->full_mutex);
+		philo->rules->philos_fullfilled++;
+		pthread_mutex_unlock(&philo->rules->full_mutex);
+	}
+	else if (philo->is_full)
+		print_action(philo, "IS_FULL");
+	print_action(philo, "IS EATING");
 	usleep(philo->rules->time_to_eat * 1000);
 	return (IS_ALIVE);
 }
