@@ -6,7 +6,7 @@
 /*   By: dyodlm <dyodlm@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 08:29:32 by dyodlm            #+#    #+#             */
-/*   Updated: 2025/04/12 15:09:24 by dyodlm           ###   ########.fr       */
+/*   Updated: 2025/04/12 15:38:16 by dyodlm           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,41 +38,42 @@ bool	is_thinking(t_philo *philo)
 	return (IS_ALIVE);
 }
 
-bool take_forks(t_philo *philo)
+bool	take_forks(t_philo *philo)
 {
-    pthread_mutex_t *first;
-    pthread_mutex_t *second;
+	pthread_mutex_t	*first;
+	pthread_mutex_t	*second;
 
-    if (philo->left_fork < philo->right_fork)
-    {
-        first = philo->left_fork;
-        second = philo->right_fork;
-    }
-    else
-    {
-        first = philo->right_fork;
-        second = philo->left_fork;
-    }
-
-    pthread_mutex_lock(first);
-    pthread_mutex_lock(second);
-
-    if (!philo->rules->dead_philo.simulation_stop)
-    {
-        print_action(philo, "TAKING LEFT FORK");
-        print_action(philo, "TAKING RIGHT FORK");
-    }
-
-    return (IS_ALIVE);
+	if (philo->left_fork < philo->right_fork)
+	{
+		first = philo->left_fork;
+		second = philo->right_fork;
+	}
+	else
+	{
+		first = philo->right_fork;
+		second = philo->left_fork;
+	}
+	pthread_mutex_lock(first);
+	pthread_mutex_lock(second);
+	pthread_mutex_lock(&philo->rules->stop_mutex);
+	if (!philo->rules->dead_philo.simulation_stop)
+	{
+		print_action(philo, "TAKING LEFT FORK");
+		print_action(philo, "TAKING RIGHT FORK");
+	}
+	pthread_mutex_unlock(&philo->rules->stop_mutex);
+	return (IS_ALIVE);
 }
 
-bool unlock_the_forks(t_philo *philo)
+bool	unlock_the_forks(t_philo *philo)
 {
-    pthread_mutex_unlock(philo->right_fork);
-    pthread_mutex_unlock(philo->left_fork);
-
-    if (!philo->rules->dead_philo.simulation_stop)
-        print_action(philo, "IS SLEEPING");
-
-    return (IS_ALIVE);
+	pthread_mutex_unlock(philo->right_fork);
+	pthread_mutex_unlock(philo->left_fork);
+	pthread_mutex_lock(&philo->rules->stop_mutex);
+	if (!philo->rules->dead_philo.simulation_stop)
+	{
+		print_action(philo, "IS SLEEPING");
+	}
+	pthread_mutex_unlock(&philo->rules->stop_mutex);
+	return (IS_ALIVE);
 }
