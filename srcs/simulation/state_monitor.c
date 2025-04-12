@@ -6,7 +6,7 @@
 /*   By: dyodlm <dyodlm@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 11:37:48 by dyodlm            #+#    #+#             */
-/*   Updated: 2025/04/12 11:19:10 by dyodlm           ###   ########.fr       */
+/*   Updated: 2025/04/12 12:04:39 by dyodlm           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,16 +23,12 @@ static void	display_fullfilled_philos(t_rules *rules)
 
 static void	display_dead_philo(t_rules *rules, int id)
 {
-//	long	time;
-
 	(void)id;
-//	time = get_time_value() - rules->start_time;
 	pthread_mutex_lock(&rules->stop_mutex);
 	rules->dead_philo.simulation_stop = 1;
 	pthread_mutex_unlock(&rules->stop_mutex);
 	if (rules->dead_philo.simulation_stop)
-		printf("died");//\nDEATH TIME : %ld ms\nID : %d\n",
-	//		time, id);
+		printf("died");
 }
 
 void	*monitor_routine(void *arg)

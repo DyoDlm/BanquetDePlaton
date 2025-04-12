@@ -6,7 +6,7 @@
 /*   By: dyodlm <dyodlm@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 08:29:32 by dyodlm            #+#    #+#             */
-/*   Updated: 2025/04/12 07:43:45 by dyodlm           ###   ########.fr       */
+/*   Updated: 2025/04/12 13:25:09 by dyodlm           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,8 @@ bool	is_eating(t_philo *philo)
 		philo->rules->philos_fullfilled++;
 		pthread_mutex_unlock(&philo->rules->full_mutex);
 	}
-	else if (philo->is_full)
-		print_action(philo, "IS_FULL BUT ...");
-	else if (!philo->rules->dead_philo.simulation_stop)
-	{
-		printf("FULLFILED PHILOS : %lld\n", philo->rules->philos_fullfilled);
+	if (!philo->rules->dead_philo.simulation_stop)
 		print_action(philo, "IS EATING");
-	}
 	usleep(philo->rules->time_to_eat * 1000);
 	return (IS_ALIVE);
 }
@@ -51,6 +46,11 @@ bool	take_left_fork(t_philo *philo)
 
 bool	take_right_fork(t_philo *philo)
 {
+	if (philo->rules->num_philo == 1)
+	{
+		usleep(philo->rules->time_to_die * 1000);
+		return (HAS_STARVED);
+	}
 	if (!philo->rules->dead_philo.simulation_stop)
 		print_action(philo, "TAKING RIGHT FORK");
 	pthread_mutex_lock(philo->right_fork);
