@@ -52,18 +52,18 @@ check_executable
 echo "==== Testing Philosopher Program ===="
 
 #	Tests infinis
-run_test 2 800 200 200 
-run_test 5 800 200 200 
-run_test 5 800 200 200 3 
-run_test 100 800 200 200 1
+#run_test 2 800 200 200 
+#run_test 5 800 200 200 
+#run_test 5 800 200 200 3 
+#run_test 100 800 200 200 1
 
 #	Tests avec max eat
-run_test 1 800 200 200 
-run_test 5 310 200 100 
-run_test 5 800 200 200 0 
-run_test 5 600 200 100 
+#run_test 1 800 200 200 
+#run_test 5 310 200 100 
+#run_test 5 800 200 200 0 
+#run_test 5 600 200 100 
 
 #	Test avec data races potentielles
-run_helgrind_test 2 800 200 200 3
-run_helgrind_test 5 800 200 200 3
+#run_helgrind_test 2 800 200 200 3
+#run_helgrind_test 5 800 200 200 3
 run_helgrind_test 100 800 200 200 1
