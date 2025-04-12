@@ -6,7 +6,7 @@
 /*   By: dyodlm <dyodlm@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 08:29:32 by dyodlm            #+#    #+#             */
-/*   Updated: 2025/04/11 09:26:32 by dyodlm           ###   ########.fr       */
+/*   Updated: 2025/04/12 07:43:45 by dyodlm           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ bool	is_eating(t_philo *philo)
 	}
 	else if (philo->is_full)
 		print_action(philo, "IS_FULL BUT ...");
-	else if (!philo->rules->simulation_stop)
+	else if (!philo->rules->dead_philo.simulation_stop)
 	{
 		printf("FULLFILED PHILOS : %lld\n", philo->rules->philos_fullfilled);
 		print_action(philo, "IS EATING");
@@ -36,14 +36,14 @@ bool	is_eating(t_philo *philo)
 
 bool	is_thinking(t_philo *philo)
 {
-	if (!philo->rules->simulation_stop)
+	if (!philo->rules->dead_philo.simulation_stop)
 		print_action(philo, "IS THINKING");
 	return (IS_ALIVE);
 }
 
 bool	take_left_fork(t_philo *philo)
 {
-	if (!philo->rules->simulation_stop)
+	if (!philo->rules->dead_philo.simulation_stop)
 		print_action(philo, "TAKING LEFT FORK");
 	pthread_mutex_lock(philo->left_fork);
 	return (IS_ALIVE);
@@ -51,7 +51,7 @@ bool	take_left_fork(t_philo *philo)
 
 bool	take_right_fork(t_philo *philo)
 {
-	if (!philo->rules->simulation_stop)
+	if (!philo->rules->dead_philo.simulation_stop)
 		print_action(philo, "TAKING RIGHT FORK");
 	pthread_mutex_lock(philo->right_fork);
 	return (IS_ALIVE);
@@ -61,7 +61,7 @@ bool	unlock_the_forks(t_philo *philo)
 {
 	pthread_mutex_unlock(philo->right_fork);
 	pthread_mutex_unlock(philo->left_fork);
-	if (!philo->rules->simulation_stop)
+	if (!philo->rules->dead_philo.simulation_stop)
 		print_action(philo, "IS SLEEPING");
 	return (IS_ALIVE);
 }

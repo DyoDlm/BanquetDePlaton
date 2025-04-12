@@ -6,7 +6,7 @@
 /*   By: dyodlm <dyodlm@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 11:41:59 by dyodlm            #+#    #+#             */
-/*   Updated: 2025/04/11 08:39:59 by dyodlm           ###   ########.fr       */
+/*   Updated: 2025/04/12 07:28:53 by dyodlm           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@ static void	print_data(t_rules *rules)
 static bool	are_values_ok(t_rules *rules)
 {
 	return (rules->num_philo > 0 && rules->time_to_die > 0
-		&& rules->time_to_eat > 0 && rules->time_to_sleep > 0);
+		&& rules->time_to_eat > 0 && rules->time_to_sleep > 0
+		&& rules->max_eat > 0);
 }
 
 static bool	parse_args(t_rules *rules, int ac, char **av)
@@ -40,7 +41,9 @@ static bool	parse_args(t_rules *rules, int ac, char **av)
 		rules->max_eat = ft_atoull(av[5]);
 	else
 		rules->max_eat = INT_MAX;
-	rules->simulation_stop = 0;
+	rules->dead_philo.simulation_stop = false;
+	rules->dead_philo.philo_id = 0;
+	rules->dead_philo.death_time = 0;
 	return (are_values_ok(rules));
 }
 
