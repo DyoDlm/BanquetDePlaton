@@ -6,7 +6,7 @@
 /*   By: dyodlm <dyodlm@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 12:05:32 by dyodlm            #+#    #+#             */
-/*   Updated: 2025/04/12 07:34:35 by dyodlm           ###   ########.fr       */
+/*   Updated: 2025/04/12 15:08:52 by dyodlm           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,8 +73,7 @@ void					*monitor_routine(void *arg);
 //	ACTIONS
 bool					is_eating(t_philo *philo);
 bool					is_thinking(t_philo *philo);
-bool					take_left_fork(t_philo *philo);
-bool					take_right_fork(t_philo *philo);
+bool					take_forks(t_philo *philo);
 bool					unlock_the_forks(t_philo *philo);
 
 //	EXIT

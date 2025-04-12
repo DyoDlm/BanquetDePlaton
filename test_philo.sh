@@ -58,16 +58,16 @@ echo "==== Testing Philosopher Program ===="
 #do_test 5 800 200 200 10
 
 # Test 80-90%
-#echo -e "\nTesting 80-90% SUCCESS RATE"
-#for ARGS in \
-#	"131 610 200 200 10" \
-#	"131 610 200 200 10" \
-#	"131 601 200 200 10" \
-#	"198 610 200 200 10" \
-#	"198 800 200 200 10"
-#do
-#	do_test $ARGS
-#done
+echo -e "\nTesting 80-90% SUCCESS RATE"
+for ARGS in \
+	"131 610 200 200 10" \
+	"131 610 200 200 10" \
+	"131 601 200 200 10" \
+	"198 610 200 200 10" \
+	"198 800 200 200 10"
+do
+	do_test $ARGS
+done
 
 ### Test 70-100%
 #echo -e "\nTesting 60-70% SUCCESS RATE"

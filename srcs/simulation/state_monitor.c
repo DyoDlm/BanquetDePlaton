@@ -6,7 +6,7 @@
 /*   By: dyodlm <dyodlm@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 11:37:48 by dyodlm            #+#    #+#             */
-/*   Updated: 2025/04/12 12:04:39 by dyodlm           ###   ########.fr       */
+/*   Updated: 2025/04/12 15:07:04 by dyodlm           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,16 @@
 
 static void	display_fullfilled_philos(t_rules *rules)
 {
+	pthread_mutex_unlock(&rules->full_mutex);
 	pthread_mutex_lock(&rules->stop_mutex);
 	rules->dead_philo.simulation_stop = 1;
 	pthread_mutex_unlock(&rules->stop_mutex);
-	pthread_mutex_unlock(&rules->full_mutex);
 	printf("ALL PHILOSOPHERS HAVE EATEN ENOUGH\n");
 }
 
 static void	display_dead_philo(t_rules *rules, int id)
 {
 	(void)id;
-	pthread_mutex_lock(&rules->stop_mutex);
 	rules->dead_philo.simulation_stop = 1;
 	pthread_mutex_unlock(&rules->stop_mutex);
 	if (rules->dead_philo.simulation_stop)
@@ -48,9 +47,11 @@ void	*monitor_routine(void *arg)
 		i = 0;
 		while (i < rules->num_philo)
 		{
+			pthread_mutex_lock(&rules->stop_mutex);
 			if ((get_time_value() - rules->philos[i].last_meal)
 				> rules->time_to_die)
 				return (display_dead_philo(rules, i), NULL);
+			pthread_mutex_unlock(&rules->stop_mutex);
 			i++;
 		}
 	}
