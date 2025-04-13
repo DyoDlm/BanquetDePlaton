@@ -59,17 +59,17 @@ echo "==== Testing Philosopher Program ===="
 #echo -e "\nTesting 100% SUCCESS RATE"
 #do_test 5 800 200 200 10
 
-# Test 80-90%
-echo -e "\nTesting 80-90% SUCCESS RATE"
-for ARGS in \
-	"131 610 200 200 10" \
-	"131 610 200 200 10" \
-	"131 601 200 200 10" \
-	"198 610 200 200 10" \
-	"198 800 200 200 10"
-do
-	do_test $ARGS
-done
+## Test 80-90%
+#echo -e "\nTesting 80-90% SUCCESS RATE"
+#for ARGS in \
+#	"131 610 200 200 10" \
+#	"131 610 200 200 10" \
+#	"131 601 200 200 10" \
+#	"198 610 200 200 10" \
+#	"198 800 200 200 10"
+#do
+#	do_test $ARGS
+#done
 
 ### Test 70-100%
 #echo -e "\nTesting 60-70% SUCCESS RATE"
@@ -82,29 +82,29 @@ done
 #done
 
 #	TEST EXAMEN
-#echo -e "\nBasic Tests for exam"
-#echo "Every philospher should live"
-#
-#for ARGS in \
-#	"5 800 200 200 20" \
-#	"4 410 200 200 5" \
-#	"4 410 200 200 10"
-#do
-#	do_test $ARGS
-#done
+echo -e "\nBasic Tests for exam"
+echo "Every philospher should live"
 
-echo -e "A philosopher should die"
-do_test 4 310 200 100 10
-
-echo -e "${YELLOW}Sketchy tests"
-# Min 60 ms for time to EAT/DIE/SLEEP
-# Max 200 philosophers
 for ARGS in \
-	"3 60 10 10 1000"
+	"5 800 200 200 20" \
+	"4 410 200 200 5" \
+	"4 410 200 200 10"
 do
 	do_test $ARGS
 done
 
+#echo -e "A philosopher should die"
+#do_test 4 310 200 100 10
+#
+#echo -e "${YELLOW}Sketchy tests"
+## Min 60 ms for time to EAT/DIE/SLEEP
+## Max 200 philosophers
+#for ARGS in \
+#	"3 60 10 10 1000"
+#do
+#	do_test $ARGS
+#done
+#
 # Test <= 50 %
 #echo -e "\nTesting <= 50% SUCCESS RATE"
 #
