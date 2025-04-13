@@ -40,7 +40,7 @@ void	*monitor_routine(void *arg)
 {
 	t_rules					*rules;
 
-	rules = (t_rules *)arg;
+  rules = (t_rules *)arg;
 	while (1)
 	{
 		usleep(1000);
