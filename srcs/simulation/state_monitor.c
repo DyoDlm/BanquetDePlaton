@@ -6,42 +6,41 @@
 /*   By: dyodlm <dyodlm@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 11:37:48 by dyodlm            #+#    #+#             */
-/*   Updated: 2025/04/12 10:46:43 by dyodlm           ###   ########.fr       */
+/*   Updated: 2025/04/13 09:37:45 by dyodlm           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
 
-static void	display_fullfilled_philos(t_rules *rules)
+static bool	check_the_death(t_rules *rules)
 {
-	pthread_mutex_lock(&rules->stop_mutex);
-	rules->dead_philo.simulation_stop = 1;
-	pthread_mutex_unlock(&rules->stop_mutex);
-	printf("ALL PHILOSOPHERS HAVE EATEN ENOUGH\n");
-}
+	unsigned long long int	i;
 
-static void	display_dead_philo(t_rules *rules, int id)
-{
-	long	time;
-
-	time = get_time_value() - rules->start_time;
-	pthread_mutex_lock(&rules->stop_mutex);
-	rules->dead_philo.simulation_stop = 1;
-	if (rules->dead_philo.simulation_stop)
-		printf("A PHILO DIED\nDEATH TIME : %ld ms\nID : %d\n",
-			time, id);
-	pthread_mutex_unlock(&rules->stop_mutex);
+	i = 0;
+	while (i < rules->num_philo)
+	{
+		pthread_mutex_lock(&rules->stop_mutex);
+		if ((get_time_value() - rules->philos[i].last_meal)
+			> rules->time_to_die)
+		{
+			rules->dead_philo.simulation_stop = 1;
+			pthread_mutex_unlock(&rules->stop_mutex);
+			pthread_mutex_lock(&rules->print_mutex);
+			printf("died");
+			pthread_mutex_unlock(&rules->print_mutex);
+			return (false);
+		}
+		pthread_mutex_unlock(&rules->stop_mutex);
+		i++;
+	}
+	return (true);
 }
 
 void	*monitor_routine(void *arg)
 {
 	t_rules					*rules;
-	unsigned long long int	i;
-	unsigned long long  int last_meal;
 
-	i = 0;
-	last_meal = 0;
-	rules = (t_rules *)arg;
+  rules = (t_rules *)arg;
 	while (1)
 	{
 		usleep(1000);
@@ -49,19 +48,17 @@ void	*monitor_routine(void *arg)
 		if (rules->philos_fullfilled >= rules->num_philo)
 		{
 			pthread_mutex_unlock(&rules->full_mutex);
-			return (display_fullfilled_philos(rules), NULL);
+			pthread_mutex_lock(&rules->stop_mutex);
+			rules->dead_philo.simulation_stop = 1;
+			pthread_mutex_unlock(&rules->stop_mutex);
+			pthread_mutex_lock(&rules->print_mutex);
+			printf("ALL PHILOSOPHERS HAVE EATEN ENOUGH\n");
+			pthread_mutex_unlock(&rules->print_mutex);
+			return (NULL);
 		}
 		pthread_mutex_unlock(&rules->full_mutex);
-		i = 0;
-		while (i < rules->num_philo)
-		{
-			pthread_mutex_lock(&rules->full_mutex);
-			last_meal = get_time_value() - rules->philos[i].last_meal;
-			pthread_mutex_unlock(&rules->full_mutex);
-			if (last_meal > rules->time_to_die)
-				return (display_dead_philo(rules, i), NULL);
-			i++;
-		}
+		if (!check_the_death(rules))
+			return (NULL);
 	}
 	return (NULL);
 }

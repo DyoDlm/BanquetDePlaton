@@ -1,4 +1,4 @@
-NAME = philosophers
+NAME = philo
 
 SDIR = srcs
 HDIR = headers

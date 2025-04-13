@@ -1,0 +1,390 @@
+Testing uneven numbers - they shouldn't die
+
+        5 800 200 200 10
+1       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+2       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+3       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+4       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+5       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+6       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+7       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+8       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+9       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+10      Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+        100 % correct
+____________________________________________
+        5 610 200 200 10
+1       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+2       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+3       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+4       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+5       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+6       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+7       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+8       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+9       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+10      Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+        100 % correct
+____________________________________________
+        199 610 200 200 10
+1       Fail    [x]     died
+2       Fail    [x]     died
+3       Fail    [x]     died
+4       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+5       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+6       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+7       Fail    [x]     died
+8       Fail    [x]     died
+9       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+10      Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+        50 % correct
+____________________________________________
+Testing uneven numbers (overkill) - they shouldn't die
+
+        5 610 200 100 10
+1       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+2       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+3       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+4       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+5       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+6       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+7       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+8       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+9       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+10      Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+        100 % correct
+____________________________________________
+        5 601 200 200 10
+1       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+2       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+3       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+4       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+5       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+6       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+7       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+8       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+9       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+10      Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+        100 % correct
+____________________________________________
+        31 610 200 100 10
+1       Pass    [✓]     FULLFILED PHILOS : 31
+2       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+3       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+4       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+5       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+6       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+7       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+8       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+9       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+10      Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+        100 % correct
+____________________________________________
+        31 610 200 200 10
+1       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+2       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+3       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+4       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+5       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+6       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+7       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+8       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+9       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+10      Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+        100 % correct
+____________________________________________
+        31 605 200 200 10
+1       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+2       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+3       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+4       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+5       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+6       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+7       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+8       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+9       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+10      Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+        100 % correct
+____________________________________________
+        31 601 200 200 10
+1       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+2       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+3       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+4       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+5       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+6       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+7       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+8       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+9       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+10      Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+        100 % correct
+____________________________________________
+        131 610 200 100 10
+1       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+2       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+3       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+4       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+5       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+6       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+7       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+8       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+9       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+10      Pass    [✓]     FULLFILED PHILOS : 131
+        100 % correct
+____________________________________________
+        131 610 200 200 10
+1       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+2       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+3       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+4       Fail    [x]     died
+5       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+6       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+7       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+8       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+9       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+10      Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+        90 % correct
+____________________________________________
+        131 605 200 200 10
+1       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+2       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+3       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+4       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+5       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+6       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+7       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+8       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+9       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+10      Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+        100 % correct
+____________________________________________
+        131 601 200 200 10
+1       Fail    [x]     died
+2       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+3       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+4       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+5       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+6       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+7       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+8       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+9       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+10      Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+        90 % correct
+____________________________________________
+        199 610 200 100 10
+1       Fail    [x]     died
+2       Fail    [x]     died
+3       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+4       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+5       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+6       Fail    [x]     died
+7       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+8       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+9       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+10      Fail    [x]     died
+        60 % correct
+____________________________________________
+        199 610 200 200 10
+1       Fail    [x]     died
+2       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+3       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+4       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+5       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+6       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+7       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+8       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+9       Fail    [x]     died
+10      Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+        80 % correct
+____________________________________________
+        199 605 200 200 10
+1       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+2       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+3       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+4       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+5       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+6       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+7       Fail    [x]     died
+8       Fail    [x]     died
+9       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+10      Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+        80 % correct
+____________________________________________
+        199 601 200 200 10
+1       Fail    [x]     died
+2       Fail    [x]     died
+3       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+4       Fail    [x]     died
+5       Fail    [x]     died
+6       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+7       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+8       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+9       Fail    [x]     died
+10      Fail    [x]     died
+        40 % correct
+____________________________________________
+Testing even numbers - they shouldn't die
+        4 410 200 100 10
+1       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+2       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+3       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+4       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+5       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+6       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+7       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+8       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+9       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+10      Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+        100 % correct
+____________________________________________
+        4 410 200 200 10
+1       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+2       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+3       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+4       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+5       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+6       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+7       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+8       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+9       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+10      Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+        100 % correct
+____________________________________________
+        198 610 200 200 10
+1       Fail    [x]     died
+2       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+3       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+4       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+5       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+6       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+7       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+8       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+9       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+10      Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+        90 % correct
+____________________________________________
+        198 800 200 200 10
+1       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+2       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+3       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+4       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+5       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+6       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+7       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+8       Fail    [x]     died
+9       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+10      Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+        90 % correct
+____________________________________________
+Testing even numbers (overkill) - they shouldn't die
+        50 410 200 100 10
+1       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+2       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+3       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+4       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+5       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+6       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+7       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+8       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+9       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+10      Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+        100 % correct
+____________________________________________
+        50 410 200 200 10
+1       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+2       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+3       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+4       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+5       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+6       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+7       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+8       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+9       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+10      Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+        100 % correct
+____________________________________________
+        50 405 200 200 10
+1       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+2       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+3       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+4       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+5       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+6       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+7       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+8       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+9       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+10      Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+        100 % correct
+____________________________________________
+        50 401 200 200 10
+1       Fail    [x]     died
+2       Fail    [x]     died
+3       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+4       Fail    [x]     died
+5       Fail    [x]     died
+6       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+7       Fail    [x]     died
+8       Fail    [x]     died
+9       Fail    [x]     died
+10      Fail    [x]     died
+        20 % correct
+____________________________________________
+        130 410 200 100 10
+1       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+2       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+3       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+4       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+5       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+6       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+7       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+8       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+9       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+10      Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+        100 % correct
+____________________________________________
+        130 410 200 200 10
+1       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+2       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+3       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+4       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+5       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+6       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+7       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+8       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+9       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+10      Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+        100 % correct
+____________________________________________
+        130 405 200 200 10
+1       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+2       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+3       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+4       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+5       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+6       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+7       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+8       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+9       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+10      Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+        100 % correct
+____________________________________________
+        130 401 200 200 10
+1       Fail    [x]     died
+2       Fail    [x]     died
+3       Fail    [x]     died
+4       Fail    [x]     died
+5       Fail    [x]     died
+6       Fail    [x]     died
+7       Fail    [x]     died
+8       Fail    [x]     died
+9       Fail    [x]     died
+10      Fail    [x]     diedFULLFILED PHILOS : 0
+        0 % correct
+____________________________________________
+        198 410 200 100 10
+1       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+2       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+3       Fail    [x]     died
+4       Pass    [✓]     ALL PHILOSOPHERS HAVE EATEN ENOUGH
+5       Fail    [x]     died
+LOADING #####^C

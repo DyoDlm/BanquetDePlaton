@@ -6,7 +6,7 @@
 /*   By: dyodlm <dyodlm@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 08:21:43 by dyodlm            #+#    #+#             */
-/*   Updated: 2025/04/12 10:46:49 by dyodlm           ###   ########.fr       */
+/*   Updated: 2025/04/12 15:09:57 by dyodlm           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,7 @@ static t_actions	actions(short int i)
 {
 	static t_actions	actions[] = {
 		is_thinking,
-		take_left_fork,
-		take_right_fork,
+		take_forks,
 		is_eating,
 		unlock_the_forks,
 		NULL
@@ -44,7 +43,7 @@ static bool	look_for_actions_to_do(t_philo *philo)
 
 	i = 0;
 	alive = IS_ALIVE;
-	while (i < 5)
+	while (i < 4)
 	{
 		handler = actions(i++);
 		if (handler)
