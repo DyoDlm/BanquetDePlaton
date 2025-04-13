@@ -5,7 +5,9 @@ RED='\033[0;31m'
 GREEN='\033[0;32m'
 YELLOW='\033[1;33m'
 NC='\033[0m'
-
+DBUG=''
+#DBUG='valgrind --tool=helgrind --history-level=none'
+DBUG='valgrind --tool=drd'
 check_executable() {
 	if [ ! -x "$BIN" ]; then
 		make dbug || (echo "Compilation failed, wtf" && exit 1)
@@ -18,7 +20,7 @@ print_head(){
 }
 
 run_test() {
-	$BIN "$@" > log.txt &
+	$DBUG $BIN "$@" > log.txt &
 	PID=$!
 	while kill -0 $PID 2>/dev/null; do
 		sleep 0.1
