@@ -6,7 +6,7 @@
 /*   By: dyodlm <dyodlm@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 12:05:32 by dyodlm            #+#    #+#             */
-/*   Updated: 2025/04/15 07:43:36 by dyodlm           ###   ########.fr       */
+/*   Updated: 2025/04/15 08:41:45 by dyodlm           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ typedef struct s_rules
 	t_stop					dead_philo;
 }	t_rules;
 
-typedef bool			(*t_actions)(t_philo *);
+typedef void			(*t_actions)(t_philo *);
 
 long					get_time_value(void);
 void					print_action(t_philo *philo, const char *action);
@@ -74,10 +74,10 @@ void					*philo_routine(void *arg);
 void					*monitor_routine(void *arg);
 
 //	ACTIONS
-bool					is_eating(t_philo *philo);
-bool					is_thinking(t_philo *philo);
-bool					take_forks(t_philo *philo);
-bool					unlock_the_forks(t_philo *philo);
+void					is_eating(t_philo *philo);
+void					is_thinking(t_philo *philo);
+void					take_forks(t_philo *philo);
+void					unlock_the_forks(t_philo *philo);
 
 //	EXIT
 void					exit_display(int status);

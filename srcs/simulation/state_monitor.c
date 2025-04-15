@@ -6,7 +6,7 @@
 /*   By: dyodlm <dyodlm@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 11:37:48 by dyodlm            #+#    #+#             */
-/*   Updated: 2025/04/15 07:54:41 by dyodlm           ###   ########.fr       */
+/*   Updated: 2025/04/15 08:29:54 by dyodlm           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,13 @@
 static bool	check_the_death(t_rules *rules)
 {
 	unsigned long long int	i;
-	long					time;
+	unsigned long long int	time;
 
 	i = 0;
 	while (i < rules->num_philo)
 	{
-		time = get_time_value();
 		pthread_mutex_lock(&rules->philos[i].self_mutex);
+		time = get_time_value();// - rules->start_time;
 		if ((time - rules->philos[i].last_meal)
 			> rules->time_to_die)
 		{
@@ -30,7 +30,8 @@ static bool	check_the_death(t_rules *rules)
 			rules->dead_philo.simulation_stop = 1;
 			pthread_mutex_unlock(&rules->stop_mutex);
 			pthread_mutex_lock(&rules->print_mutex);
-			printf("died");
+			printf("time of death : %lld\tID : %lld died\n", time - rules->start_time, i);
+			printf("last eat was : %lld\n", rules->philos[i].last_meal - rules->start_time);
 			pthread_mutex_unlock(&rules->print_mutex);
 			return (false);
 		}

@@ -6,7 +6,7 @@
 /*   By: dyodlm <dyodlm@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 08:21:43 by dyodlm            #+#    #+#             */
-/*   Updated: 2025/04/15 07:16:59 by dyodlm           ###   ########.fr       */
+/*   Updated: 2025/04/15 08:40:24 by dyodlm           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,23 +35,18 @@ static t_actions	actions(short int i)
 	return (actions[i]);
 }
 
-static bool	look_for_actions_to_do(t_philo *philo)
+static void	look_for_actions_to_do(t_philo *philo)
 {
 	short int	i;
-	bool		alive;
 	t_actions	handler;
 
 	i = 0;
-	alive = IS_ALIVE;
 	while (i < 4)
 	{
 		handler = actions(i++);
 		if (handler)
-			alive = handler(philo);
-		if (alive == HAS_STARVED)
-			break ;
+			handler(philo);
 	}
-	return (alive);
 }
 
 void	*philo_routine(void *arg)
@@ -63,9 +58,8 @@ void	*philo_routine(void *arg)
 		usleep(1000);
 	while (keep_running(philo))
 	{
-		if (!look_for_actions_to_do(philo))
-			return (exit_display(-1), NULL);
-		usleep(philo->rules->time_to_sleep * 1000);
+		look_for_actions_to_do(philo);
+//		usleep(philo->rules->time_to_sleep * 1000);
 	}
 	return (NULL);
 }

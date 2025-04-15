@@ -6,7 +6,7 @@
 /*   By: dyodlm <dyodlm@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 08:29:32 by dyodlm            #+#    #+#             */
-/*   Updated: 2025/04/15 07:51:14 by dyodlm           ###   ########.fr       */
+/*   Updated: 2025/04/15 08:40:31 by dyodlm           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static void	eat(t_philo *philo)
 	pthread_mutex_unlock(&philo->self_mutex);
 }
 
-bool	is_eating(t_philo *philo)
+void	is_eating(t_philo *philo)
 {
 	eat(philo);
 	if (philo->meals_eaten >= philo->rules->max_eat && !philo->is_full)
@@ -41,16 +41,18 @@ bool	is_eating(t_philo *philo)
 	else
 		pthread_mutex_unlock(&philo->rules->stop_mutex);
 	usleep(philo->rules->time_to_eat * 1000);
-	return (IS_ALIVE);
+//	if (philo->id % 2 == 0)
+//		usleep(philo->rules->time_to_eat * 1000);
+//	else
+//		usleep(philo->rules->time_to_eat)
 }
 
-bool	is_thinking(t_philo *philo)
+void	is_thinking(t_philo *philo)
 {
 	print_action(philo, "IS THINKING");
-	return (IS_ALIVE);
 }
 
-bool	take_forks(t_philo *philo)
+void	take_forks(t_philo *philo)
 {
 	pthread_mutex_t	*first;
 	pthread_mutex_t	*second;
@@ -76,13 +78,12 @@ bool	take_forks(t_philo *philo)
 	}
 	else
 		pthread_mutex_unlock(&philo->rules->stop_mutex);
-	return (IS_ALIVE);
 }
 
-bool	unlock_the_forks(t_philo *philo)
+void	unlock_the_forks(t_philo *philo)
 {
 	pthread_mutex_unlock(philo->left_fork);
 	pthread_mutex_unlock(philo->right_fork);
 	print_action(philo, "IS SLEEPING");
-	return (IS_ALIVE);
+	usleep(philo->rules->time_to_sleep * 1000);
 }
