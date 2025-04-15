@@ -6,7 +6,7 @@
 /*   By: dyodlm <dyodlm@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 12:03:50 by dyodlm            #+#    #+#             */
-/*   Updated: 2025/04/15 11:48:35 by dyodlm           ###   ########.fr       */
+/*   Updated: 2025/04/15 14:31:42 by dyodlm           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,9 @@
 long	get_time_value(void)
 {
 	struct timeval	time;
-	long			value;
 
 	gettimeofday(&time, NULL);
-	value = time.tv_sec * 1000 + time.tv_usec / 1000;
-	return (value);
+	return (time.tv_sec * 1000 + time.tv_usec / 1000);
 }
 
 void	print_action(t_philo *philo, const char *action)

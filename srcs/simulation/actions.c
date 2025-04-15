@@ -6,14 +6,28 @@
 /*   By: dyodlm <dyodlm@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 08:29:32 by dyodlm            #+#    #+#             */
-/*   Updated: 2025/04/15 12:17:19 by dyodlm           ###   ########.fr       */
+/*   Updated: 2025/04/15 14:36:05 by dyodlm           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
 
+static void	safe_sleep(unsigned long long duration, t_rules *rules)
+{
+	unsigned long long	start;
+
+	start = get_time_value();
+	while (!rules->simulation_stop)
+	{
+		if (get_time_value() - start >= duration)
+			break ;
+		usleep(500); // très petit délai pour rester réactif
+	}
+}
+
 void is_eating(t_philo *philo)
 {
+	pthread_mutex_lock(&philo->rules->full_mutex);
 	philo->meals_eaten++;
 	if (philo->rules->max_eat > 0 &&
 		philo->meals_eaten >= philo->rules->max_eat &&
@@ -25,7 +39,8 @@ void is_eating(t_philo *philo)
 	if (!philo->rules->simulation_stop)
 		print_action(philo, "IS EATING");
 	philo->last_meal = get_time_value();
-	usleep(philo->rules->time_to_eat * 1000);
+	pthread_mutex_unlock(&philo->rules->full_mutex);
+	safe_sleep(philo->rules->time_to_eat, philo->rules);
 }
 
 void	is_thinking(t_philo *philo)
@@ -62,5 +77,5 @@ void	unlock_the_forks(t_philo *philo)
 	pthread_mutex_unlock(philo->left_fork);
 	pthread_mutex_unlock(philo->right_fork);
 	print_action(philo, "IS SLEEPING");
-	usleep(philo->rules->time_to_sleep * 1000);
+	safe_sleep(philo->rules->time_to_sleep, philo->rules);
 }
