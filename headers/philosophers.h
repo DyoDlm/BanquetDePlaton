@@ -6,7 +6,7 @@
 /*   By: dyodlm <dyodlm@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 12:05:32 by dyodlm            #+#    #+#             */
-/*   Updated: 2025/04/15 11:41:10 by dyodlm           ###   ########.fr       */
+/*   Updated: 2025/04/15 14:09:09 by dyodlm           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,8 @@ typedef struct s_rules
 
 typedef void			(*t_actions)(t_philo *);
 
-long					get_time_value(void);
+void					safe_sleep(unsigned long long time, t_rules *rules);
+unsigned long long int	get_time_value(void);
 void					print_action(t_philo *philo, const char *action);
 int						init_all(t_rules *rules, int argc, char **argv);
 void					*philo_routine(void *arg);

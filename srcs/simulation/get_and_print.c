@@ -6,31 +6,37 @@
 /*   By: dyodlm <dyodlm@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 12:03:50 by dyodlm            #+#    #+#             */
-/*   Updated: 2025/04/15 11:48:35 by dyodlm           ###   ########.fr       */
+/*   Updated: 2025/04/15 14:09:27 by dyodlm           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
 
-long	get_time_value(void)
+unsigned long long get_time_value(void)
 {
-	struct timeval	time;
-	long			value;
+	struct timeval	tv;
 
-	gettimeofday(&time, NULL);
-	value = time.tv_sec * 1000 + time.tv_usec / 1000;
-	return (value);
+	gettimeofday(&tv, NULL);
+	return ((tv.tv_sec * 1000ULL) + (tv.tv_usec / 1000ULL));
 }
 
-void	print_action(t_philo *philo, const char *action)
+void	safe_sleep(unsigned long long time, t_rules *rules)
 {
-	long	now;
+	unsigned long long	start;
 
+	start = get_time_value();
+	while (!rules->simulation_stop)
+	{
+		if (get_time_value() - start >= time)
+			break;
+		usleep(100);
+	}
+}
+
+void	print_action(t_philo *philo, const char *msg)
+{
 	pthread_mutex_lock(&philo->rules->print_mutex);
 	if (!philo->rules->simulation_stop)
-	{
-		now = get_time_value() - philo->rules->start_time;
-		printf("time : %ld\tID : %d\t\tAction : %s\n", now, philo->id, action);
-	}
+		printf("%llu %d %s\n", get_time_value() - philo->rules->start_time, philo->id, msg);
 	pthread_mutex_unlock(&philo->rules->print_mutex);
 }
