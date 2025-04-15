@@ -6,7 +6,7 @@
 /*   By: dyodlm <dyodlm@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 11:37:48 by dyodlm            #+#    #+#             */
-/*   Updated: 2025/04/13 09:37:45 by dyodlm           ###   ########.fr       */
+/*   Updated: 2025/04/15 07:54:41 by dyodlm           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,18 @@
 static bool	check_the_death(t_rules *rules)
 {
 	unsigned long long int	i;
+	long					time;
 
 	i = 0;
 	while (i < rules->num_philo)
 	{
-		pthread_mutex_lock(&rules->stop_mutex);
-		if ((get_time_value() - rules->philos[i].last_meal)
+		time = get_time_value();
+		pthread_mutex_lock(&rules->philos[i].self_mutex);
+		if ((time - rules->philos[i].last_meal)
 			> rules->time_to_die)
 		{
+			pthread_mutex_unlock(&rules->philos[i].self_mutex);
+			pthread_mutex_lock(&rules->stop_mutex);
 			rules->dead_philo.simulation_stop = 1;
 			pthread_mutex_unlock(&rules->stop_mutex);
 			pthread_mutex_lock(&rules->print_mutex);
@@ -30,7 +34,8 @@ static bool	check_the_death(t_rules *rules)
 			pthread_mutex_unlock(&rules->print_mutex);
 			return (false);
 		}
-		pthread_mutex_unlock(&rules->stop_mutex);
+		else
+			pthread_mutex_unlock(&rules->philos[i].self_mutex);
 		i++;
 	}
 	return (true);

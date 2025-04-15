@@ -6,7 +6,7 @@
 /*   By: dyodlm <dyodlm@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 11:41:59 by dyodlm            #+#    #+#             */
-/*   Updated: 2025/04/12 11:28:09 by dyodlm           ###   ########.fr       */
+/*   Updated: 2025/04/15 07:46:15 by dyodlm           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ int	init_all(t_rules *rules, int argc, char **argv)
 	if (!parse_args(rules, argc, argv))
 		return (0);
 	rules->forks = calloc(sizeof(pthread_mutex_t) * rules->num_philo, 1);
+	rules->souls = calloc(sizeof(pthread_mutex_t) * rules->num_philo, 1);
 	rules->philos = calloc(sizeof(t_philo) * rules->num_philo, 1);
 	if (!rules->forks || !rules->philos)
 		return (0);
@@ -82,7 +83,10 @@ int	init_all(t_rules *rules, int argc, char **argv)
 	pthread_mutex_init(&rules->stop_mutex, NULL);
 	pthread_mutex_init(&rules->full_mutex, NULL);
 	while (i < rules->num_philo)
-		pthread_mutex_init(&rules->forks[i++], NULL);
+	{
+		pthread_mutex_init(&rules->forks[i], NULL);
+		pthread_mutex_init(&rules->souls[i++], NULL);
+	}
 	data_distribution(rules);
 	rules->start_time = get_time_value();
 	return (exit_display(1), 1);

@@ -6,7 +6,7 @@
 /*   By: dyodlm <dyodlm@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 12:05:32 by dyodlm            #+#    #+#             */
-/*   Updated: 2025/04/12 15:08:52 by dyodlm           ###   ########.fr       */
+/*   Updated: 2025/04/15 07:43:36 by dyodlm           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <pthread.h>
 # include <sys/time.h>
 # include <stdbool.h>
+# include <stddef.h>
 
 # define IS_ALIVE 1
 # define HAS_STARVED 0
@@ -42,6 +43,7 @@ typedef struct s_philo
 	pthread_t				thread;
 	pthread_mutex_t			*left_fork;
 	pthread_mutex_t			*right_fork;
+	pthread_mutex_t			self_mutex;
 	t_rules					*rules;
 }	t_philo;
 
@@ -55,6 +57,7 @@ typedef struct s_rules
 	unsigned long long int	start_time;
 	unsigned long long int	philos_fullfilled;
 	pthread_mutex_t			*forks;
+	pthread_mutex_t			*souls;
 	pthread_mutex_t			print_mutex;
 	pthread_mutex_t			stop_mutex;
 	pthread_mutex_t			full_mutex;
