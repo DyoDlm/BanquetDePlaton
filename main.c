@@ -6,7 +6,7 @@
 /*   By: dyodlm <dyodlm@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 11:53:29 by dyodlm            #+#    #+#             */
-/*   Updated: 2025/04/11 08:35:05 by dyodlm           ###   ########.fr       */
+/*   Updated: 2025/04/15 15:39:28 by dyodlm           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ static void	start_simulation(t_rules *rules)
 	}
 	pthread_create(&monitor, NULL, monitor_routine, rules);
 	i = 0;
+	printf("out of thread\n");
 	while (i < rules->num_philo)
 		pthread_join(rules->philos[i++].thread, NULL);
 	pthread_join(monitor, NULL);

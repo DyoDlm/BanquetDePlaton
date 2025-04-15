@@ -6,7 +6,7 @@
 /*   By: dyodlm <dyodlm@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 07:11:23 by dyodlm            #+#    #+#             */
-/*   Updated: 2025/04/15 11:52:55 by dyodlm           ###   ########.fr       */
+/*   Updated: 2025/04/15 15:44:29 by dyodlm           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ void	exit_free(t_rules *rules)
 	unsigned long long int	i;
 
 	i = 0;
+	printf("la patate\n");
+	exit(0);
 	while (i < rules->num_philo)
 		pthread_mutex_destroy(&rules->forks[i]);
 	free(rules->forks);

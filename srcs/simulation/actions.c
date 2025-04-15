@@ -6,7 +6,7 @@
 /*   By: dyodlm <dyodlm@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 08:29:32 by dyodlm            #+#    #+#             */
-/*   Updated: 2025/04/15 14:36:05 by dyodlm           ###   ########.fr       */
+/*   Updated: 2025/04/15 15:33:06 by dyodlm           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,23 @@
 
 static void	safe_sleep(unsigned long long duration, t_rules *rules)
 {
-	unsigned long long	start;
+	unsigned long long int	start;
 
 	start = get_time_value();
 	while (!rules->simulation_stop)
 	{
 		if (get_time_value() - start >= duration)
 			break ;
-		usleep(500); // très petit délai pour rester réactif
+		usleep(500);
 	}
 }
 
-void is_eating(t_philo *philo)
+void	is_eating(t_philo *philo)
 {
 	pthread_mutex_lock(&philo->rules->full_mutex);
 	philo->meals_eaten++;
-	if (philo->rules->max_eat > 0 &&
-		philo->meals_eaten >= philo->rules->max_eat &&
-		!philo->is_full)
+	if (philo->rules->max_eat > 0 && philo->meals_eaten
+		>= philo->rules->max_eat && !philo->is_full)
 	{
 		philo->is_full = true;
 		philo->rules->philos_fullfilled++;

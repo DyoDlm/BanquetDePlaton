@@ -6,45 +6,53 @@
 /*   By: dyodlm <dyodlm@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 11:37:48 by dyodlm            #+#    #+#             */
-/*   Updated: 2025/04/15 14:33:03 by dyodlm           ###   ########.fr       */
+/*   Updated: 2025/04/15 15:41:51 by dyodlm           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
 
-void *monitor_routine(void *arg)
+static bool	fullfiled_philos(t_rules *rules)
 {
-	t_rules *rules = (t_rules *)arg;
-	unsigned long long now;
-	size_t i;
+	if (rules->max_eat > 0 && rules->philos_fullfilled == rules->num_philo)
+	{
+		rules->simulation_stop = true;
+		pthread_mutex_lock(&rules->print_mutex);
+		printf("ALL PHILOSOPHERS HAVE EATEN ENOUGH\n");
+		pthread_mutex_unlock(&rules->print_mutex);
+		return (false);
+	}
+	usleep(1000);
+	return (true);
+}
 
+void	*monitor_routine(void *arg)
+{
+	t_rules					*rules;
+	unsigned long long int	now;
+	size_t					i;
+
+	rules = (t_rules *)arg;
 	while (!rules->simulation_stop)
 	{
 		i = 0;
 		now = get_time_value();
 		while (i < rules->num_philo)
 		{
-			if (!rules->philos[i].is_full &&
-				(now - rules->philos[i].last_meal > rules->time_to_die))
+			if (!rules->philos[i].is_full
+				&& (now - rules->philos[i].last_meal > rules->time_to_die))
 			{
 				rules->simulation_stop = true;
 				pthread_mutex_lock(&rules->print_mutex);
-				printf("%llu %d died\n", now - rules->start_time, rules->philos[i].id);
-				printf("last eat was : %llu\n", rules->philos[i].last_meal - rules->start_time);
+				printf("dead");
 				pthread_mutex_unlock(&rules->print_mutex);
-				return NULL;
+				printf("DEDEDEDD");
+				return (NULL);
 			}
 			i++;
 		}
-		if (rules->max_eat > 0 && rules->philos_fullfilled == rules->num_philo)
-		{
-			rules->simulation_stop = true;
-			pthread_mutex_lock(&rules->print_mutex);
-			printf("ALL PHILOSOPHERS HAVE EATEN ENOUGH\n");
-			pthread_mutex_unlock(&rules->print_mutex);
-			return NULL;
-		}
-		usleep(1000);
+		if (!fullfiled_philos(rules))
+			return (NULL);
 	}
 	return NULL;
 }

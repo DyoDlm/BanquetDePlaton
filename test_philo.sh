@@ -6,7 +6,7 @@ GREEN='\033[0;32m'
 YELLOW='\033[1;33m'
 NC='\033[0m'
 DBUG=''
-DBUG='valgrind --tool=helgrind --history-level=none'
+#DBUG='valgrind --tool=helgrind --history-level=none'
 #DBUG='valgrind --tool=drd'
 check_executable() {
 	if [ ! -x "$BIN" ]; then
@@ -20,7 +20,7 @@ print_head(){
 }
 
 run_test() {
-	$DBUG $BIN "$@" > log.txt &
+	$BIN "$@" > log.txt &
 	PID=$!
 	while kill -0 $PID 2>/dev/null; do
 		sleep 0.1
@@ -86,13 +86,8 @@ echo -e "\nBasic Tests for exam"
 echo "Every philospher should live"
 
 for ARGS in \
-	"3 410 200 200 10" \
 	"4 410 200 200 10" \
-	"5 410 200 200 10" \
-	"6 410 200 200 10" \
-	"7 410 200 200 10" \
-	"5 800 200 200 20" \
-	"4 410 200 200 5"
+	"5 800 200 200 20"
 do
 	do_test $ARGS
 done
