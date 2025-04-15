@@ -6,7 +6,7 @@
 /*   By: dyodlm <dyodlm@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 08:21:43 by dyodlm            #+#    #+#             */
-/*   Updated: 2025/04/15 08:40:24 by dyodlm           ###   ########.fr       */
+/*   Updated: 2025/04/15 11:49:26 by dyodlm           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,7 @@ static bool	keep_running(t_philo *philo)
 {
 	bool	running;
 
-	pthread_mutex_lock(&philo->rules->stop_mutex);
-	running = !philo->rules->dead_philo.simulation_stop;
-	pthread_mutex_unlock(&philo->rules->stop_mutex);
+	running = !philo->rules->simulation_stop;
 	return (running);
 }
 
@@ -57,9 +55,6 @@ void	*philo_routine(void *arg)
 	if (philo->id % 2 == 0)
 		usleep(1000);
 	while (keep_running(philo))
-	{
 		look_for_actions_to_do(philo);
-//		usleep(philo->rules->time_to_sleep * 1000);
-	}
 	return (NULL);
 }
