@@ -6,7 +6,7 @@
 /*   By: dyodlm <dyodlm@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 11:37:48 by dyodlm            #+#    #+#             */
-/*   Updated: 2025/04/15 11:48:06 by dyodlm           ###   ########.fr       */
+/*   Updated: 2025/04/15 12:16:03 by dyodlm           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,11 @@ void *monitor_routine(void *arg)
 	while (!rules->simulation_stop)
 	{
 		i = 0;
+		now = get_time_value();
 		while (i < rules->num_philo)
 		{
-			now = get_time_value();
 			if (!rules->philos[i].is_full &&
-				(now - rules->philos[i].last_meal > rules->time_to_die))
+				(now - rules->philos[i].last_meal > rules->time_to_die + 250))
 			{
 				rules->simulation_stop = true;
 				pthread_mutex_lock(&rules->print_mutex);

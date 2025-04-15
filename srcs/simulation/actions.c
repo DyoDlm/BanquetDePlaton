@@ -6,7 +6,7 @@
 /*   By: dyodlm <dyodlm@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 08:29:32 by dyodlm            #+#    #+#             */
-/*   Updated: 2025/04/15 11:48:17 by dyodlm           ###   ########.fr       */
+/*   Updated: 2025/04/15 12:17:19 by dyodlm           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 void is_eating(t_philo *philo)
 {
-	philo->last_meal = get_time_value();
 	philo->meals_eaten++;
 	if (philo->rules->max_eat > 0 &&
 		philo->meals_eaten >= philo->rules->max_eat &&
@@ -25,6 +24,7 @@ void is_eating(t_philo *philo)
 	}
 	if (!philo->rules->simulation_stop)
 		print_action(philo, "IS EATING");
+	philo->last_meal = get_time_value();
 	usleep(philo->rules->time_to_eat * 1000);
 }
 
