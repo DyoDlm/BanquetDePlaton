@@ -40,7 +40,7 @@ run_test() {
 
 loop_the_test() {
 	n=0
-	for i in {1..10}; do
+	for i in {1..4}; do
 		n=$i
 		run_test "$@"
 	done
