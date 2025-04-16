@@ -6,7 +6,7 @@
 /*   By: dyodlm <dyodlm@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 07:11:23 by dyodlm            #+#    #+#             */
-/*   Updated: 2025/04/16 13:45:59 by dyodlm           ###   ########.fr       */
+/*   Updated: 2025/04/16 13:48:32 by dyodlm           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,10 @@ void	exit_free(t_rules *rules)
 	unsigned long long int	i;
 
 	i = 0;
-	exit(0);
 	while (i < rules->num_philo)
-		pthread_mutex_destroy(&rules->forks[i]);
+		pthread_mutex_destroy(&rules->forks[i++]);
 	free(rules->forks);
 	free(rules->philos);
-	pthread_mutex_destroy(&rules->print_mutex);
 	pthread_mutex_destroy(&rules->full_mutex);
+	pthread_mutex_destroy(&rules->print_mutex);
 }
