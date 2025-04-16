@@ -6,29 +6,26 @@
 /*   By: dyodlm <dyodlm@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 08:21:43 by dyodlm            #+#    #+#             */
-/*   Updated: 2025/04/15 08:40:24 by dyodlm           ###   ########.fr       */
+/*   Updated: 2025/04/15 14:39:22 by dyodlm           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
-
-static bool	keep_running(t_philo *philo)
+/*static bool	keep_running(t_philo *philo)
 {
 	bool	running;
 
-	pthread_mutex_lock(&philo->rules->stop_mutex);
-	running = !philo->rules->dead_philo.simulation_stop;
-	pthread_mutex_unlock(&philo->rules->stop_mutex);
+	running = !philo->rules->simulation_stop;
 	return (running);
 }
 
 static t_actions	actions(short int i)
 {
 	static t_actions	actions[] = {
-		is_thinking,
 		take_forks,
 		is_eating,
 		unlock_the_forks,
+		is_thinking,
 		NULL
 	};
 
@@ -47,19 +44,19 @@ static void	look_for_actions_to_do(t_philo *philo)
 		if (handler)
 			handler(philo);
 	}
-}
+}*/
 
 void	*philo_routine(void *arg)
 {
 	t_philo	*philo;
 
 	philo = (t_philo *)arg;
-	if (philo->id % 2 == 0)
-		usleep(1000);
-	while (keep_running(philo))
+	while (!philo->rules->simulation_stop)
 	{
-		look_for_actions_to_do(philo);
-//		usleep(philo->rules->time_to_sleep * 1000);
+		take_forks(philo);
+		is_eating(philo);
+		unlock_the_forks(philo);
+		is_thinking(philo);
 	}
 	return (NULL);
 }

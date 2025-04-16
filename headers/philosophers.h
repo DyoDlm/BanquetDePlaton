@@ -6,7 +6,7 @@
 /*   By: dyodlm <dyodlm@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 12:05:32 by dyodlm            #+#    #+#             */
-/*   Updated: 2025/04/15 08:41:45 by dyodlm           ###   ########.fr       */
+/*   Updated: 2025/04/15 11:41:10 by dyodlm           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <pthread.h>
 # include <sys/time.h>
 # include <stdbool.h>
+# include <stdatomic.h>
 # include <stddef.h>
 
 # define IS_ALIVE 1
@@ -26,24 +27,15 @@
 
 typedef struct s_rules	t_rules;
 
-typedef struct s_stop
-{
-	unsigned long long int	death_time;
-	int						philo_id;
-	bool					simulation_stop;
-}	t_stop;
-
 typedef struct s_philo
 {
 	int						id;
 	unsigned long long int	meals_eaten;
 	unsigned long long int	last_meal;
 	bool					is_full;
-	bool					alive;
 	pthread_t				thread;
 	pthread_mutex_t			*left_fork;
 	pthread_mutex_t			*right_fork;
-	pthread_mutex_t			self_mutex;
 	t_rules					*rules;
 }	t_philo;
 
@@ -62,7 +54,7 @@ typedef struct s_rules
 	pthread_mutex_t			stop_mutex;
 	pthread_mutex_t			full_mutex;
 	t_philo					*philos;
-	t_stop					dead_philo;
+	atomic_bool				simulation_stop;
 }	t_rules;
 
 typedef void			(*t_actions)(t_philo *);

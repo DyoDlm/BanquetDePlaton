@@ -6,7 +6,7 @@
 /*   By: dyodlm <dyodlm@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 11:41:59 by dyodlm            #+#    #+#             */
-/*   Updated: 2025/04/15 07:46:15 by dyodlm           ###   ########.fr       */
+/*   Updated: 2025/04/15 11:48:38 by dyodlm           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,7 @@ static bool	parse_args(t_rules *rules, int ac, char **av)
 		rules->max_eat = ft_atoull(av[5]);
 	else
 		rules->max_eat = INT_MAX;
-	rules->dead_philo.simulation_stop = false;
-	rules->dead_philo.philo_id = 0;
-	rules->dead_philo.death_time = 0;
+	rules->simulation_stop = false;
 	return (are_values_ok(rules));
 }
 
@@ -56,7 +54,6 @@ static void	data_distribution(t_rules *rules)
 	{
 		rules->philos[i].id = i + 1;
 		rules->philos[i].is_full = false;
-		rules->philos[i].alive = true;
 		rules->philos[i].last_meal = 0;
 		rules->philos[i].meals_eaten = 0;
 		rules->philos[i].last_meal = 0;
@@ -75,18 +72,13 @@ int	init_all(t_rules *rules, int argc, char **argv)
 	if (!parse_args(rules, argc, argv))
 		return (0);
 	rules->forks = calloc(sizeof(pthread_mutex_t) * rules->num_philo, 1);
-	rules->souls = calloc(sizeof(pthread_mutex_t) * rules->num_philo, 1);
 	rules->philos = calloc(sizeof(t_philo) * rules->num_philo, 1);
 	if (!rules->forks || !rules->philos)
 		return (0);
 	pthread_mutex_init(&rules->print_mutex, NULL);
-	pthread_mutex_init(&rules->stop_mutex, NULL);
 	pthread_mutex_init(&rules->full_mutex, NULL);
 	while (i < rules->num_philo)
-	{
-		pthread_mutex_init(&rules->forks[i], NULL);
-		pthread_mutex_init(&rules->souls[i++], NULL);
-	}
+		pthread_mutex_init(&rules->forks[i++], NULL);
 	data_distribution(rules);
 	rules->start_time = get_time_value();
 	return (exit_display(1), 1);

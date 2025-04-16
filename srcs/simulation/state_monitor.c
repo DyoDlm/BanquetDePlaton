@@ -6,64 +6,67 @@
 /*   By: dyodlm <dyodlm@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 11:37:48 by dyodlm            #+#    #+#             */
-/*   Updated: 2025/04/15 08:29:54 by dyodlm           ###   ########.fr       */
+/*   Updated: 2025/04/16 13:56:16 by dyodlm           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
 
-static bool	check_the_death(t_rules *rules)
+static bool	fullfiled_philos(t_rules *rules)
 {
+	pthread_mutex_lock(&rules->full_mutex);
+	if (rules->max_eat > 0 && rules->philos_fullfilled == rules->num_philo)
+	{
+		pthread_mutex_unlock(&rules->full_mutex);
+		rules->simulation_stop = true;
+		pthread_mutex_lock(&rules->print_mutex);
+		printf("ALL PHILOSOPHERS HAVE EATEN ENOUGH\n");
+		pthread_mutex_unlock(&rules->print_mutex);
+		return (true);
+	}
+	else
+		pthread_mutex_unlock(&rules->full_mutex);
+	usleep(1000);
+	return (false);
+}
+
+static bool	dead_philo(t_rules *rules)
+{
+	unsigned long long int	now;
 	unsigned long long int	i;
-	unsigned long long int	time;
 
 	i = 0;
+	now = get_time_value();
 	while (i < rules->num_philo)
 	{
-		pthread_mutex_lock(&rules->philos[i].self_mutex);
-		time = get_time_value();// - rules->start_time;
-		if ((time - rules->philos[i].last_meal)
-			> rules->time_to_die)
+		pthread_mutex_lock(&rules->full_mutex);
+		if (!rules->philos[i].is_full
+			&& (now - rules->philos[i].last_meal > rules->time_to_die))
 		{
-			pthread_mutex_unlock(&rules->philos[i].self_mutex);
-			pthread_mutex_lock(&rules->stop_mutex);
-			rules->dead_philo.simulation_stop = 1;
-			pthread_mutex_unlock(&rules->stop_mutex);
+			pthread_mutex_unlock(&rules->full_mutex);
+			rules->simulation_stop = true;
 			pthread_mutex_lock(&rules->print_mutex);
-			printf("time of death : %lld\tID : %lld died\n", time - rules->start_time, i);
-			printf("last eat was : %lld\n", rules->philos[i].last_meal - rules->start_time);
+			printf("Philo N*%lld is dead at %lld\n", i, now - rules->start_time);
 			pthread_mutex_unlock(&rules->print_mutex);
-			return (false);
+			return (true);
 		}
 		else
-			pthread_mutex_unlock(&rules->philos[i].self_mutex);
+			pthread_mutex_unlock(&rules->full_mutex);
 		i++;
 	}
-	return (true);
+	return (false);
 }
 
 void	*monitor_routine(void *arg)
 {
 	t_rules					*rules;
 
-  rules = (t_rules *)arg;
-	while (1)
+	rules = (t_rules *)arg;
+	while (!rules->simulation_stop)
 	{
-		usleep(1000);
-		pthread_mutex_lock(&rules->full_mutex);
-		if (rules->philos_fullfilled >= rules->num_philo)
-		{
-			pthread_mutex_unlock(&rules->full_mutex);
-			pthread_mutex_lock(&rules->stop_mutex);
-			rules->dead_philo.simulation_stop = 1;
-			pthread_mutex_unlock(&rules->stop_mutex);
-			pthread_mutex_lock(&rules->print_mutex);
-			printf("ALL PHILOSOPHERS HAVE EATEN ENOUGH\n");
-			pthread_mutex_unlock(&rules->print_mutex);
+		if (dead_philo(rules))
 			return (NULL);
-		}
-		pthread_mutex_unlock(&rules->full_mutex);
-		if (!check_the_death(rules))
+		if (fullfiled_philos(rules))
 			return (NULL);
 	}
 	return (NULL);
