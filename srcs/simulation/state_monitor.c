@@ -6,7 +6,7 @@
 /*   By: dyodlm <dyodlm@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 11:37:48 by dyodlm            #+#    #+#             */
-/*   Updated: 2025/04/16 13:52:32 by dyodlm           ###   ########.fr       */
+/*   Updated: 2025/04/16 13:56:16 by dyodlm           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ static bool	dead_philo(t_rules *rules)
 			pthread_mutex_unlock(&rules->full_mutex);
 			rules->simulation_stop = true;
 			pthread_mutex_lock(&rules->print_mutex);
-			printf("dead");
+			printf("Philo N*%lld is dead at %lld\n", i, now - rules->start_time);
 			pthread_mutex_unlock(&rules->print_mutex);
 			return (true);
 		}
