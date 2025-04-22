@@ -12,6 +12,7 @@ check_executable() {
 	if [ ! -x "$BIN" ]; then
 		make dbug || (echo "Compilation failed, wtf" && exit 1)
 	fi
+#	mkdir traces
 }
 
 print_head(){
@@ -20,22 +21,22 @@ print_head(){
 }
 
 run_test() {
-	$BIN "$@" > log.txt &
+	$BIN "$@" > log$n.txt &
 	PID=$!
 	while kill -0 $PID 2>/dev/null; do
 		sleep 0.1
 	done
 
-	if grep -iq "died" log.txt || grep -iq "DIED" log.txt; then
+	if grep -iq "died" log$n.txt || grep -iq "DIED" log$n.txt; then
 		echo -e "test [$n] : ${RED}[KO]${NC}"
 	else
-		cat log.txt | grep "ALL PHILO"
+		cat log$n.txt | grep "ALL PHILO"
 		if [ $? != 0 ]; then
-			echo "${YELLOW}WARNING ALL PHILO MAY NOT HAVE EATEN MAX_EAT"
+			echo -e "${YELLOW}WARNING ${NC}ALL PHILO MAY NOT HAVE EATEN MAX_EAT"
 		fi
 		echo -e "test [$n] : ${GREEN}[OK]${NC}"
 	fi
-	rm log.txt
+	rm log$n.txt
 }
 
 loop_the_test() {
